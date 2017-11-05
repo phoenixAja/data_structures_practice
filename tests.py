@@ -51,6 +51,49 @@ class TestQueue(TestStack):
         for i in range(3):
             self.assertEqual(self.structure.get(), i)
 
+    
+
+class TestDequeue(unittest.TestCase):
+        
+    def setUp(self):
+        self.structure = Dequeue()
+        
+    @staticmethod
+    def add_to_structure_end(self, items):
+        for i in items:
+            self.structure.add_to_end(i)
+        
+    @staticmethod
+    def add_to_structure_front(self, items):
+        for i in items:
+            self.structure.add_to_front(i)
+            
+    def test_structure_front_peek(self):
+        self.add_to_structure_front(self, iter(['people', 'places', 'things']))
+        self.assertEqual(self.structure.peek_front(), 'things')
+        
+    def test_structure_end_peek(self):
+        self.add_to_structure_end(self, iter([1,2,3,4,5]))
+        self.assertEqual(self.structure.peek_end(), 5)
+        
+    def test_structure_isEmpty(self):
+        self.assertEqual(self.structure.isEmpty(), True)
+        self.add_to_structure_front(self, range(3))    
+        self.assertEqual(self.structure.isEmpty(), False)
+        
+    def test_structure_get_length(self):
+        self.add_to_structure_front(self, range(5))
+        self.assertEqual(self.structure.get_length(), 5)
+        
+    def test_structure_get_front(self):
+        self.add_to_structure_front(self, range(4))
+        self.assertEqual(self.structure.get_from_front(), 3)
+        
+    def test_structure_get_end(self):
+        self.add_to_structure_end(self, range(4))
+        self.assertEqual(self.structure.get_from_end(), 3)
+
+
 
 class TestDataStructureImplementations(unittest.TestCase):
     

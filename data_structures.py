@@ -54,7 +54,7 @@ class Dequeue(StructureMixin, Queue):
 
     def add_to_front(self, val):
         #super(Dequeue, self).add(val)
-        Queue().add(self, val)
+        Queue.add(self, val)
 
     def add_to_end(self, val):
         # call to the stack add method
