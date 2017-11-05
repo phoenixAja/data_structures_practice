@@ -1,7 +1,7 @@
 import unittest
 from data_structures import Stack, Queue, Dequeue
 import data_structures_implemented as dsi
-from custom_exceptions import EmptyItemsError
+from custom_exceptions import EmptyItemsError, WrongTypeException
 
 
 class TestStack(unittest.TestCase):
@@ -134,8 +134,14 @@ class TestDataStructureImplementations(unittest.TestCase):
     def test_palindrome_checked(self):
     	palindrome = "racecar"
     	not_palindrome = "coffee"
+    	not_char = 3
+    	empty = ""
+
     	self.assertEqual(dsi.palindrome_check(palindrome), True)
+    	self.assertEqual(dsi.palindrome_check(empty), True)
     	self.assertEqual(dsi.palindrome_check(not_palindrome), False)
+    	self.assertRaises(WrongTypeException, lambda: dsi.palindrome_check(not_char))
+
         
 
 

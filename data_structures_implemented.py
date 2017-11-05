@@ -1,7 +1,7 @@
 import re
 import itertools
 from data_structures import Stack, Queue, Dequeue
-
+from custom_exceptions import WrongTypeException
 
 def revstring(str):
     # without stack
@@ -87,6 +87,41 @@ def hot_potato(names_lst, num):
             turns = 1
     
     # get the survivor off of the queue
-    return names.get()          
+    return names.get()       
+
+
+def palindrome_check(input):
+    """
+    implementation of Dequeue, will check if string is palindrome
+    """
+    if type(input) != str:
+        raise WrongTypeException("input item needs to be of type str")
+
+    dequeue = Dequeue()
+
+    for i in input:  
+        dequeue.add_to_end(i) # use add_to_end O(1) vs. O(n)
+
+    is_palindrome = True
+
+    while is_palindrome == True and dequeue.get_length() > 1:
+        if dequeue.get_from_end() != dequeue.get_from_front():
+            is_palindrome = False
+
+    return is_palindrome
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
