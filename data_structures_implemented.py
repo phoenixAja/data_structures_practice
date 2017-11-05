@@ -54,6 +54,34 @@ def balanced_parentheses(paren_str):
             else:
                 return False
 
-    return True        
+    return True  
+
+
+def hot_potato(names_lst, num):
+    # queue data structure implementation
+    # returns the last person surviving in the queue
+    
+    names = Queue()
+    
+    for i in names_lst:
+        # add the names to the queue
+        names.add(i)
+    
+    turns = 1
+    while names.get_length() > 1:
+        
+        if turns < num:
+            # get and return items to queue
+            potato = names.get()
+            names.add(potato)
+            turns += 1
+            
+        else:
+            # when turns == num remove item
+            names.get()
+            turns = 1
+    
+    # get the survivor off of the queue
+    return names.get()          
 
 

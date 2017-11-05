@@ -31,7 +31,6 @@ class Stack:
         return last_val
 
 
-# In[13]:
 
 
 def revstring(str):
@@ -86,20 +85,17 @@ def balanced_parentheses(paren_str):
             
 
 
-# In[19]:
 
 balanced_parentheses('[([])]]{}]{]}')
 
 
-# In[12]:
+
 
 s = Stack()
 s.push(2)
 s.push(3)
 s.peek()
 
-
-# In[50]:
 
 class Queue_pal:
     
@@ -151,13 +147,13 @@ def hot_potato(names_lst, num):
     
 
 
-# In[51]:
+
 
 names = ['bryan', 'louis', 'cynthia', 'randall', 'joshua', 'heidi']
 hot_potato(names, 4)
 
 
-# In[ ]:
+
 
 
 

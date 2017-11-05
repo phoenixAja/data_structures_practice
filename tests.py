@@ -66,6 +66,13 @@ class TestDataStructureImplementations(unittest.TestCase):
         # test with other characters
         self.assertEqual(balanced_parentheses('A{VB[12k(())]}'), True)
         self.assertEqual(balanced_parentheses('th7&{}}}['), False)
+
+    # test queue implementation of hot potato 
+    def test_hot_potato(self):
+        names = ['bryan', 'louis', 'cynthia', 'randall']
+        self.assertEqual(hot_potato(names, 4), 'louis')
+        
+
         
         
 
