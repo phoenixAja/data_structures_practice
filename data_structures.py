@@ -32,12 +32,29 @@ class Queue(Stack):
         self.items.insert(0, val)
 
 
-class Dequeue(Queue):
+class StrucureMixin(Queue):
+     '''I am going to rename these methods in Dequeu class for less 
+     ambiguous naming, and potentially in other data structures I 
+     will need to do something similar, therefore a mixin seems like
+     the best approach'''
+
+    def add(self, val):
+        pass
+    
+    def get(self, val):
+        pass
+    
+    def peek(self):
+        pass
+
+
+class Dequeue(StructureMixin, Queue):
     # a mixture of both Queues and stack, can retrieve and items to 
     # both front and back of a dequeue
 
     def add_to_front(self, val):
-        super(Dequeue, self).add(val)
+        #super(Dequeue, self).add(val)
+        Queue().add(self, val)
 
     def add_to_end(self, val):
         # call to the stack add method
@@ -45,9 +62,10 @@ class Dequeue(Queue):
 
     def get_from_end(self):
         # use queue get() method
-        super(Dequeue, self).get()
+        #super(Dequeue, self).get()
+        return super(Queue, self).get()
 
-    def get_from_front(self, val):
+    def get_from_front(self):
         #create new method for this
         return self.items.pop(0)
 
@@ -56,5 +74,9 @@ class Dequeue(Queue):
         return self.items[0]
 
     def peek_end(self):
-        super(Dequeue, self).peek()    
+        #super(Dequeue, self).peek()  
+        return super(Queue, self).peek()
     
+
+
+
