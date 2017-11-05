@@ -1,4 +1,7 @@
 import re
+import itertools
+from data_structures import Stack, Queue, Dequeue
+
 
 def revstring(str):
     # without stack
@@ -26,8 +29,8 @@ def revstringstack(str):
 
 
 def balanced_parentheses(paren_str):
-    # problem involving applications of stack
-    
+    """problem involving applications of stack"""
+
     # filter out all values besides brackets
     matches = re.finditer(r'[(){}[\]]+', paren_str)
     parsed_iter = itertools.chain.from_iterable(
@@ -58,8 +61,10 @@ def balanced_parentheses(paren_str):
 
 
 def hot_potato(names_lst, num):
-    # queue data structure implementation
-    # returns the last person surviving in the queue
+    """     
+     queue data structure implementation
+     returns the last person surviving in the queue
+     """
     
     names = Queue()
     

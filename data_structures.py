@@ -1,10 +1,6 @@
+from custom_exceptions import EmptyItemsError
 
 
-class EmptyItemsError(Exception):
-    '''Raised when items is empty'''
-
-
-# implement a stack in python
 class Stack:
     
     def __init__(self):
@@ -40,17 +36,19 @@ class Stack:
 
 
 class Queue(Stack):
-    # inherit from stack since mostly similar  
+    """inherit from stack since mostly similar  """
+
     def add(self, val):
-        # more efficient to use stack O(1) instead of O(n)
-        self.items.insert(0, val)
+        self.items.insert(0, val) # more efficient to use stack O(1) instead of O(n)
 
 
-class StrucureMixin(Queue):
-     '''I am going to rename these methods in Dequeu class for less 
+class StructureMixin(Queue):
+    """     
+     I am going to rename these methods in Dequeu class for less 
      ambiguous naming, and potentially in other data structures I 
      will need to do something similar, therefore a mixin seems like
-     the best approach'''
+     the best approach
+     """
 
     def add(self, val):
         pass
@@ -63,8 +61,10 @@ class StrucureMixin(Queue):
 
 
 class Dequeue(StructureMixin, Queue):
-    # a mixture of both Queues and stack, can retrieve and items to 
-    # both front and back of a dequeue
+    """    
+    a mixture of both Queues and stack, can retrieve and items to 
+    both front and back of a dequeue
+    """
 
     def add_to_front(self, val):
         #super(Dequeue, self).add(val)

@@ -1,4 +1,7 @@
 import unittest
+from data_structures import Stack, Queue, Dequeue
+from data_structures_implemented import balanced_parentheses, hot_potato
+from custom_exceptions import EmptyItemsError
 
 
 class TestStack(unittest.TestCase):
@@ -37,7 +40,7 @@ class TestStack(unittest.TestCase):
         # for when get, or peek is called on empty structure
         self.assertRaises(EmptyItemsError, lambda: self.structure.get())
         self.assertRaises(EmptyItemsError, lambda: self.structure.peek())
-        
+
 
 class TestQueue(TestStack):
     
@@ -128,7 +131,9 @@ class TestDataStructureImplementations(unittest.TestCase):
         self.assertEqual(hot_potato(names, 4), 'louis')
         
 
-        
+
+if __name__ == '__main__':
+    unittest.main()        
         
 
 
