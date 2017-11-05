@@ -1,6 +1,6 @@
 import unittest
 from data_structures import Stack, Queue, Dequeue
-from data_structures_implemented import balanced_parentheses, hot_potato
+import data_structures_implemented as dsi
 from custom_exceptions import EmptyItemsError
 
 
@@ -115,20 +115,27 @@ class TestDataStructureImplementations(unittest.TestCase):
     # test stack implementation of balanced parantheses
     def test_balanced_paranthesis(self):
         # basic case
-        self.assertEqual(balanced_parentheses('[([])]]{}]{]}'), False)
-        self.assertEqual(balanced_parentheses('(({{[]}}))'), True)
+        self.assertEqual(dsi.balanced_parentheses('[([])]]{}]{]}'), False)
+        self.assertEqual(dsi.balanced_parentheses('(({{[]}}))'), True)
                          
         # test in case empty
-        self.assertEqual(balanced_parentheses(''), True)
+        self.assertEqual(dsi.balanced_parentheses(''), True)
         
         # test with other characters
-        self.assertEqual(balanced_parentheses('A{VB[12k(())]}'), True)
-        self.assertEqual(balanced_parentheses('th7&{}}}['), False)
+        self.assertEqual(dsi.balanced_parentheses('A{VB[12k(())]}'), True)
+        self.assertEqual(dsi.balanced_parentheses('th7&{}}}['), False)
 
     # test queue implementation of hot potato 
     def test_hot_potato(self):
         names = ['bryan', 'louis', 'cynthia', 'randall']
-        self.assertEqual(hot_potato(names, 4), 'louis')
+        self.assertEqual(dsi.hot_potato(names, 4), 'louis')
+
+
+    def test_palindrome_checked(self):
+    	palindrome = "racecar"
+    	not_palindrome = "coffee"
+    	self.assertEqual(dsi.palindrome_check(palindrome), True)
+    	self.assertEqual(dsi.palindrome_check(not_palindrome), False)
         
 
 
