@@ -1,8 +1,21 @@
 # implement a stack in python
+
+
+class EmptyItemsError(Exception):
+    '''Raised when items is empty'''
+
+
+# implement a stack in python
 class Stack:
     
     def __init__(self):
         self.items = []
+        
+    def check_items(self):
+        if self.isEmpty():
+            raise EmptyItemsError("No Items")   
+        else:
+            pass
         
     def isEmpty(self):
         if len(self.items) == 0:
@@ -18,10 +31,12 @@ class Stack:
         self.items.append(val)
         
     def get(self):
+        self.check_items()
         last_val = self.items.pop()
         return last_val
 
     def peek(self):
+        self.check_items()
         return self.items[len(self.items) - 1]
 
 
@@ -62,20 +77,22 @@ class Dequeue(StructureMixin, Queue):
 
     def get_from_end(self):
         # use queue get() method
-        #super(Dequeue, self).get()
         return super(Queue, self).get()
 
     def get_from_front(self):
         #create new method for this
+        self.check_items()
         return self.items.pop(0)
 
     def peek_front(self):
         # create new method
+        self.check_items()
         return self.items[0]
 
     def peek_end(self):
         #super(Dequeue, self).peek()  
         return super(Queue, self).peek()
+    
     
 
 
