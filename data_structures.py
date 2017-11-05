@@ -1,4 +1,3 @@
-# implement a stack in python
 
 
 class EmptyItemsError(Exception):

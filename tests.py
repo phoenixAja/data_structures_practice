@@ -18,6 +18,7 @@ class TestStack(unittest.TestCase):
         self.assertEqual(self.structure.isEmpty(), False)
              
     def test_structure_peek(self):
+        
         structure = self.add_to_structure(self, iter(['people', 'potatoes', 'pansies']))
         self.assertEqual(self.structure.peek(), 'pansies')
             
@@ -31,7 +32,12 @@ class TestStack(unittest.TestCase):
         # test that first in are first out
         for i in reversed(range(3)):
             self.assertEqual(self.structure.get(), i)
-
+            
+    def test_empty_items(self):
+        # for when get, or peek is called on empty structure
+        self.assertRaises(EmptyItemsError, lambda: self.structure.get())
+        self.assertRaises(EmptyItemsError, lambda: self.structure.peek())
+        
 
 class TestQueue(TestStack):
     
@@ -92,7 +98,13 @@ class TestDequeue(unittest.TestCase):
     def test_structure_get_end(self):
         self.add_to_structure_end(self, range(4))
         self.assertEqual(self.structure.get_from_end(), 3)
-
+        
+    def test_empty_items(self):
+        # for when get, or peek is called on empty structure
+        self.assertRaises(EmptyItemsError, lambda: self.structure.get_from_front())
+        self.assertRaises(EmptyItemsError, lambda: self.structure.get_from_end())
+        self.assertRaises(EmptyItemsError, lambda: self.structure.peek_front())
+        self.assertRaises(EmptyItemsError, lambda: self.structure.peek_end())
 
 
 class TestDataStructureImplementations(unittest.TestCase):
