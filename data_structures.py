@@ -8,7 +8,7 @@ class Stack:
         
     def check_items(self):
         if self.isEmpty():
-            raise EmptyItemsError("No Items")   
+            raise EmptyItemsError("No Items in {struct}".format(struct=self.__class__.__name__))   
         else:
             pass
         
