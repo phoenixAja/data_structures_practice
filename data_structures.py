@@ -123,50 +123,47 @@ class List:
         # store nodes in list
         self.head = None
     
+    @staticmethod
     def check_items(self):
         if self.head == None:
             raise EmptyItemsError("No Items in {struct}".format(struct=self.__class__.__name__))   
         else:
             pass
-
-    def index(self, val):
-        # returns first occurance of val
-        check_items() # check if items is empty
-        idx = 0
-        node = self.head
-        while node.get_next() != None:
-            if val == node.get_data():
-                return idx
-            else:
-                node = node.get_next()
-                idx += 1    
-
-        raise ItemNotInList("value is not in {struct}".format(struct=self.__class__.__name__))
-
-    def insert(self, pos, val):
-        check_items()
-        node = self.head()
-        idx = 0
-        for i in range(pos):
-            node = node.get_next()
-
-
-    def get_from_index(idx):
-        check_items()
-        if idx <= len(self.items):
-            return self.items[idx]
-        raise ItemNotInList("idx not in {struct}".format(struct=self.__class__.__name__))        
         
     def add(self, val):
         # assume the item is not in the list?
         new = Node(val)
         new.set_next(self.head)
-        self.head = new
-        
-    def get(self):
+        self.head = new    
+
+    def size(self):
+        """returns the size of the list"""
+        size = 0
+        initial = self.head
+        while initial != None:
+            size += 1
+            print(initial.get_data())
+            initial = initial.get_next()
+        return size
+    
+    def search(self, val):
+        """returns boolean if value is in the list"""
         self.check_items()
-        last_val = self.items.pop()
-        return last_val
+        initial = self.head
+        while initial != None:
+            if initial.get_data() == val:
+                return True
+            else:
+                initial = initial.get_next()
+                
+        return False
+    
+    def remove(self, val):
+        """remove value from list"""
+        self.check_items()
+        initial = self.head
+        while initial != None:
+            if initial.get_data() == val:
 
     def peek(self):
         raise MethodNotAvailable
