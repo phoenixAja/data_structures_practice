@@ -94,7 +94,11 @@ class Dequeue(StructureMixin, Queue):
     
 
 class Node:
-    # used to create parts of linked list
+    """
+    used to create parts of linked list
+    not mine, taken from Problem Solving with Algorythms and Data Structures Using Python 
+    by Bradley N. Miller and David L. Ranum
+    """
     def __init__(self, data):
         self.data = data
         self.next = None
