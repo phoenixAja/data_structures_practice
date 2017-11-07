@@ -1,7 +1,7 @@
 import unittest
 from data_structures import Stack, Queue, Dequeue
 import data_structures_implemented as dsi
-from custom_exceptions import EmptyItemsError, WrongTypeException
+from custom_exceptions import EmptyItemsError, WrongTypeException, MethodNotAvailable, ItemNotInList
 
 
 class TestStack(unittest.TestCase):
@@ -108,6 +108,58 @@ class TestDequeue(unittest.TestCase):
         self.assertRaises(EmptyItemsError, lambda: self.structure.get_from_end())
         self.assertRaises(EmptyItemsError, lambda: self.structure.peek_front())
         self.assertRaises(EmptyItemsError, lambda: self.structure.peek_end())
+
+
+
+class TestUnorderedList(TestStack):
+    """inherit from TestStack since most methods there can get reused"""
+
+    def setUp(self):
+        self.structure = UnorderedList()
+ 
+    def test_structure_peek(self):
+        self.assertRaises(MethodNotAvailable, lambda: self.structure.peek())
+            
+    def test_structure_get_length(self):
+        structure = self.add_to_structure(self, range(5))
+        self.assertEqual(self.structure.get_length(), 5)
+        
+    def test_structure_get(self):
+        self.assertRaises(MethodNotAvailable, lambda: self.structure.get())
+            
+    def test_empty_items(self):
+        # for when attempt to retrieve is called on empty list
+        self.assertRaises(EmptyItemsError, lambda: self.structure.pop())
+        self.assertRaises(EmptyItemsError, lambda: self.structure.remove())
+        self.assertRaises(EmptyItemsError, lambda: self.structure.insert(3,"fire"))
+        # when item not in list
+
+    def test_remove_item(self):
+        self.add_to_structure(self, range(3))
+        self.structure.remove(2)
+        self.assertEqual(self.structure.items, [0, 1])
+        self.assertRaises(ItemNotInList, lambda: self.structure.remove(6))
+
+    def test_search(self):
+        self.add_to_structure(self, iter('Thomas', 'Harriet', 'George'))
+        self.assertEqual(self.structure.search('Thomas'), True)
+        self.assertEqual(self.structure.search('Paul'), False)    
+
+    def test_index(self):
+        self.add_to_structure(self, iter(['dalmation', 'spaniel', 'greyhound', 'huskey']))
+        self.assertEqual(self.structure.index('spaniel'), 1)
+        self.assertEqual(self.structure.index('huskey'), 3)
+        self.assertRaises(ItemNotInList, lambda: self.structure.index('chihuahua'))
+
+    def test_insert(self):
+        self.add_to_structure(self, range(3))
+        self.assertEqual(self.structure.insert(1,'alchemy'), [0, 'alchemy', 1, 2])
+
+    def test_get_pos(self):
+        self.assertRaises(ItemNotInList, lambda: self.structure.pop(4))
+        self.add_to_structure(self, iter(['A', 4, None, 'Mix']))
+        self.assertEqual(self.structure.get(1), 4)
+
 
 
 class TestDataStructureImplementations(unittest.TestCase):

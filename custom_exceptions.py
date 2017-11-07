@@ -10,3 +10,10 @@ class WrongTypeException(Exception):
 	Raised when wrong type is encountered for data
 	structure implementation
 	"""
+
+
+class MethodNotAvailable(Exception):
+	"""
+	Raised when user tries to use method that is 
+	not available to current structure
+	"""	
