@@ -1,5 +1,5 @@
 import unittest
-from data_structures import Stack, Queue, Dequeue
+from data_structures import Stack, Queue, Dequeue, List
 import data_structures_implemented as dsi
 from custom_exceptions import EmptyItemsError, WrongTypeException, MethodNotAvailable, ItemNotInList
 
@@ -115,7 +115,7 @@ class TestUnorderedList(TestStack):
     """inherit from TestStack since most methods there can get reused"""
 
     def setUp(self):
-        self.structure = UnorderedList()
+        self.structure = List()
  
     def test_structure_peek(self):
         self.assertRaises(MethodNotAvailable, lambda: self.structure.peek())

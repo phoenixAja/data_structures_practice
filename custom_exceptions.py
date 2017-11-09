@@ -16,4 +16,10 @@ class MethodNotAvailable(Exception):
 	"""
 	Raised when user tries to use method that is 
 	not available to current structure
-	"""	
+	"""
+
+
+class ItemNotInList(Exception):
+	"""
+	Raised when user tries to retrieve item that doesn't exist (for list)
+	"""		

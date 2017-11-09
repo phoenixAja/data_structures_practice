@@ -118,6 +118,7 @@ class Node:
 
 
 class List:
+    """linked list"""
 
     def __init__(self):
         # store nodes in list
@@ -158,12 +159,13 @@ class List:
                 
         return False
     
-    def remove(self, val):
-        """remove value from list"""
-        self.check_items()
-        initial = self.head
-        while initial != None:
-            if initial.get_data() == val:
+    # def remove(self, val):
+    #     """remove value from list"""
+    #     self.check_items()
+    #     initial = self.head
+    #     while initial != None:
+    #         if initial.get_data() == val:
+                
 
     def peek(self):
         raise MethodNotAvailable
