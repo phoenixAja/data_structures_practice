@@ -137,6 +137,12 @@ class List:
         new.set_next(self.head)
         self.head = new    
 
+    def isEmpty(self):
+        if self.head == None:
+            return True
+        else:
+            return False
+
     def size(self):
         """returns the size of the list"""
         size = 0
@@ -149,7 +155,7 @@ class List:
     
     def search(self, val):
         """returns boolean if value is in the list"""
-        self.check_items()
+        self.check_items(self)
         initial = self.head
         while initial != None:
             if initial.get_data() == val:
@@ -159,13 +165,28 @@ class List:
                 
         return False
     
-    # def remove(self, val):
-    #     """remove value from list"""
-    #     self.check_items()
-    #     initial = self.head
-    #     while initial != None:
-    #         if initial.get_data() == val:
-                
+    def remove(self, val):
+        """remove value from list"""
+        self.check_items(self)
+        if not self.search(val):
+            raise ItemNotInList("item {value} not in list".format(value=val))
+
+        previous = None
+        initial = self.head
+        while initial.get_data() != None:
+            if initial.get_data() == val:
+                try:
+                    initial.set_data(initial.get_next().get_data())
+                    initial.set_next(initial.get_next().get_next())
+                except AttributeError:
+                    previous.set_next(None)
+                    
+                break
+            previous = initial
+            initial = initial.get_next()
+
+        
+
 
     def peek(self):
         raise MethodNotAvailable
